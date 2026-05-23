@@ -1,15 +1,23 @@
 ---
 title: Changelog
-description: Laufende technische Aenderungen am AddSales Dashboard.
+description: Laufende technische Änderungen am AddSales Dashboard.
 ---
 
 ## 2026-05-24
 
+<Update label="2026-05-24" description="Dokumentationsstil festgelegt" tags={["documentation", "changelog"]}>
+
+- Bestehende documentation.ai-Seiten auf echte deutsche Umlaute umgestellt.
+- Pflege-Regel ergänzt: Doku und Changelog bleiben bei relevanten Code-/Datenänderungen aktuell.
+- Deutsche Fließtexte nutzen künftig `ä`, `ö`, `ü` und `ß` statt Umschreibungen wie `ae`, `oe`, `ue` oder `ss`.
+
+</Update>
+
 <Update label="2026-05-24" description="HubSpot Activity Attribution repariert" tags={["hubspot", "activities", "convex"]}>
 
-- Calls/E-Mails werden jetzt auch ueber Sequenz-Owner und kundenbezogene HubSpot Owner/User erkannt.
+- Calls/E-Mails werden jetzt auch über Sequenz-Owner und kundenbezogene HubSpot Owner/User erkannt.
 - Activity-Writes laufen in eventlimitierten Chunks gegen Convex Read-Limits.
-- Eyeable, Atmoce und GIGA.GREEN fuer Mai 2026 mit echten Activities neu synchronisiert.
+- Eyeable, Atmoce und GIGA.GREEN für Mai 2026 mit echten Activities neu synchronisiert.
 
 </Update>
 
@@ -17,8 +25,8 @@ description: Laufende technische Aenderungen am AddSales Dashboard.
 
 - App-Code lokal als Git-Repo initialisiert.
 - Initialer Commit `Initial AddSales dashboard app` erstellt.
-- Doku aus dem App-Repo in `documentationai-Docs` uebertragen.
-- Architektur-, HubSpot-Sync-, Security- und Betriebsseiten ergaenzt.
+- Doku aus dem App-Repo in `documentationai-Docs` übertragen.
+- Architektur-, HubSpot-Sync-, Security- und Betriebsseiten ergänzt.
 - Repo-Erstellung unter `Klickstark/addsales-dashboard` versucht; blockiert durch fehlende Org-Berechtigung `CreateRepository`.
 
 </Update>
@@ -31,8 +39,8 @@ description: Laufende technische Aenderungen am AddSales Dashboard.
 - Demo-Fallbacks aus Live-Modus entfernt.
 - Sprintdetail nutzt konkrete Sprint-ID aus Convex.
 - Sprintzeilen werden aus echten `sprints` geladen.
-- HubSpot Backfill fuer historische Sprints angestossen.
-- Sequence Inventory fuer echte HubSpot-Sequenzen aufgebaut.
+- HubSpot Backfill für historische Sprints angestoßen.
+- Sequence Inventory für echte HubSpot-Sequenzen aufgebaut.
 - BCA als `workflow_mapping_required` markiert.
 
 </Update>

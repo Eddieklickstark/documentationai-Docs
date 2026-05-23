@@ -5,13 +5,13 @@ description: Clerk, Convex, HubSpot, Resend und Vercel im AddSales Dashboard.
 
 ## Clerk
 
-Clerk ist fuer interne Admin-Authentifizierung und optionales Kundenlogin per Microsoft zustandig.
+Clerk ist für interne Admin-Authentifizierung und optionales Kundenlogin per Microsoft zustandig.
 
 Produktion:
 
 - Frontend API: `https://clerk.addsales.io`
-- Redirect URI fuer Microsoft OAuth: `https://clerk.addsales.io/v1/oauth_callback`
-- Convex muss den echten Clerk Issuer ueber `CLERK_JWT_ISSUER_DOMAIN` kennen.
+- Redirect URI für Microsoft OAuth: `https://clerk.addsales.io/v1/oauth_callback`
+- Convex muss den echten Clerk Issuer über `CLERK_JWT_ISSUER_DOMAIN` kennen.
 
 ## Convex
 
@@ -22,11 +22,11 @@ Convex speichert:
 - Leads, Sequence Memberships, Activities und Termine
 - HubSpot Sync Runs und Snapshots
 
-Der stuendliche HubSpot-Sync laeuft in `convex/crons.ts`.
+Der stündliche HubSpot-Sync läuft in `convex/crons.ts`.
 
 ## HubSpot
 
-HubSpot ist die Quelle fuer:
+HubSpot ist die Quelle für:
 
 - Contacts
 - Sequences
@@ -43,5 +43,5 @@ Resend versendet Dashboard-Invites und Magic Links. Provider-Events werden in `e
 
 ## Vercel
 
-Das Frontend wird als Vite-App gebaut und ueber Vercel ausgeliefert. Die Convex-URL und der Clerk Publishable Key sind Frontend-Environment-Variablen.
+Das Frontend wird als Vite-App gebaut und über Vercel ausgeliefert. Die Convex-URL und der Clerk Publishable Key sind Frontend-Environment-Variablen.
 

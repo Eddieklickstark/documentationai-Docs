@@ -11,7 +11,7 @@ App-Code:
 Lokaler Pfad:
 /Users/eddieesche/Documents/Codex/2026-05-21/wir-wollen-ein-product-bauen-das
 
-Gewuenschtes Ziel:
+Gewünschtes Ziel:
 Klickstark/addsales-dashboard
 ```
 
@@ -31,9 +31,9 @@ Pflegeweg:
 2. Commit und Push
 3. documentation.ai synchronisiert aus dem Repo
 
-Direktes Arbeiten im GitHub-Repo ist bevorzugt gegenueber einer documentation.ai API, weil Aenderungen versioniert, reviewbar und wiederholbar sind.
+Direktes Arbeiten im GitHub-Repo ist bevorzugt gegenüber einer documentation.ai API, weil Änderungen versioniert, reviewbar und wiederholbar sind.
 
-## Pruefkommandos
+## Prüfkommandos
 
 ```bash
 npm run build
@@ -46,20 +46,20 @@ Bekannte Lint-Warnungen:
 
 - generierte Convex-Dateien melden ungenutzte `eslint-disable` Direktiven
 
-## Regelmaessiger Sync
+## Regelmäßiger Sync
 
 `convex/crons.ts` startet den HubSpot Sync alle 60 Minuten.
 
-Der Sync soll inkrementell neue Daten ergaenzen. Fuer historische Nachlaeufe gibt es gezielte Diagnose- und Backfill-Actions in `convex/hubspot.ts`.
+Der Sync soll inkrementell neue Daten ergänzen. Für historische Nachläufe gibt es gezielte Diagnose- und Backfill-Actions in `convex/hubspot.ts`.
 
 ## Pflege-Regel
 
-Bei jeder relevanten Code-Aenderung wird diese Doku aktualisiert:
+Bei jeder relevanten Code-Änderung wird diese Doku aktualisiert:
 
 - neue Routen
 - neue Convex Actions/Queries/Mutations
 - neue Env-Variablen
-- Veraenderungen am HubSpot Mapping
-- Security- oder Auth-Aenderungen
+- Veränderungen am HubSpot Mapping
+- Security- oder Auth-Änderungen
 - bekannte offene Risiken
-
+- deutsche Fließtexte werden mit Umlauten geschrieben, also `ä`, `ö`, `ü` und `ß` statt `ae`, `oe`, `ue` oder `ss`, sofern es kein Code-Identifier, API-Feld oder Markenname ist

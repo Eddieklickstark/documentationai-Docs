@@ -5,9 +5,9 @@ description: Admin-Auth, Kundenlogin, Magic Links und Backend-Absicherung.
 
 ## Interne Nutzer
 
-Interne AddSales-Nutzer melden sich ueber Clerk an. Geplant ist Microsoft-only SSO und Invite-only Zugriff.
+Interne AddSales-Nutzer melden sich über Clerk an. Geplant ist Microsoft-only SSO und Invite-only Zugriff.
 
-Convex prueft Admin-Zugriff serverseitig ueber Clerk JWT Claims und erlaubte Admin-E-Mails bzw. Domains.
+Convex prüft Admin-Zugriff serverseitig über Clerk JWT Claims und erlaubte Admin-E-Mails bzw. Domains.
 
 ## Kundenzugriff
 
@@ -16,7 +16,7 @@ Kunden haben zwei Wege:
 1. Invite-Mail mit Token
 2. Magic Link Login
 
-Der Flow erzeugt eine echte `customerSessions` Session in Convex. Das Frontend speichert nicht nur eine E-Mail, sondern nutzt ein Session-Token, das Convex bei Dashboard-Queries prueft.
+Der Flow erzeugt eine echte `customerSessions` Session in Convex. Das Frontend speichert nicht nur eine E-Mail, sondern nutzt ein Session-Token, das Convex bei Dashboard-Queries prüft.
 
 ## Routen
 
@@ -26,15 +26,15 @@ Der Flow erzeugt eine echte `customerSessions` Session in Convex. Das Frontend s
 
 ## Wichtige Regeln
 
-- Kunden duerfen nur ihr eigenes Dashboard laden.
+- Kunden dürfen nur ihr eigenes Dashboard laden.
 - Admin-Zugriff darf nicht allein vom Frontend abhangen.
 - Magic-Link Tokens werden gehasht gespeichert.
-- Sessions haben Ablaufzeiten und koennen widerrufen werden.
-- Secrets gehoeren in Convex/Vercel/Clerk, nie ins GitHub-Repo.
+- Sessions haben Ablaufzeiten und können widerrufen werden.
+- Secrets gehören in Convex/Vercel/Clerk, nie ins GitHub-Repo.
 
 ## DNS und Clerk
 
-Fuer die Produktionsdomain `addsales.io` muessen Clerk DNS Records exakt gesetzt und danach in Clerk verifiziert werden.
+Für die Produktionsdomain `addsales.io` müssen Clerk DNS Records exakt gesetzt und danach in Clerk verifiziert werden.
 
-E-Mail-DNS fuer Clerk nutzt Subdomains wie `clkmail.addsales.io` und DKIM-Subdomains. Diese Records beeinflussen Microsoft Mail fuer die Hauptdomain nicht, solange MX/SPF der Hauptdomain nicht ersetzt werden.
+E-Mail-DNS für Clerk nutzt Subdomains wie `clkmail.addsales.io` und DKIM-Subdomains. Diese Records beeinflussen Microsoft Mail für die Hauptdomain nicht, solange MX/SPF der Hauptdomain nicht ersetzt werden.
 

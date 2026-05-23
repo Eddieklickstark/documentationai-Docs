@@ -1,13 +1,13 @@
 ---
 title: AddSales Dashboard
-description: Produktdokumentation fuer das AddSales Kunden- und Admin-Dashboard.
+description: Produktdokumentation für das AddSales Kunden- und Admin-Dashboard.
 ---
 
 ## Ueberblick
 
-Das AddSales Dashboard ist die zentrale Oberflaeche fuer interne AddSales-Admins und eingeladene Kunden.
+Das AddSales Dashboard ist die zentrale Oberfläche für interne AddSales-Admins und eingeladene Kunden.
 
-Interne Nutzer sehen alle Kundendashboards, legen neue Dashboards an, pruefen HubSpot-Syncs und teilen Kundenlinks. Kunden sehen nur ihr eigenes Dashboard mit Sprint-Fortschritt, Leads, Terminen und Aktivitaeten.
+Interne Nutzer sehen alle Kundendashboards, legen neue Dashboards an, prüfen HubSpot-Syncs und teilen Kundenlinks. Kunden sehen nur ihr eigenes Dashboard mit Sprint-Fortschritt, Leads, Terminen und Aktivitäten.
 
 <Columns cols={2}>
   <Card title="Admin Dashboard" icon="shield">
@@ -20,7 +20,7 @@ Interne Nutzer sehen alle Kundendashboards, legen neue Dashboards an, pruefen Hu
     Kontakte, Sequenzen, Calls, E-Mails und protokollierte Termine aus HubSpot.
   </Card>
   <Card title="Convex Backend" icon="server">
-    Realtime-Datenbank, serverseitige Auth-Pruefung und stuendlicher Sync.
+    Realtime-Datenbank, serverseitige Auth-Prüfung und stündlicher Sync.
   </Card>
 </Columns>
 
@@ -32,7 +32,7 @@ Der aktuelle Code liegt lokal unter:
 /Users/eddieesche/Documents/Codex/2026-05-21/wir-wollen-ein-product-bauen-das
 ```
 
-Der Code ist lokal als Git-Repo initialisiert. Das Ziel-Repo soll im GitHub-Unternehmen `Klickstark` liegen. Das Anlegen unter `Klickstark/addsales-dashboard` ist aktuell durch fehlende Org-Berechtigung fuer `CreateRepository` blockiert.
+Der Code ist lokal als Git-Repo initialisiert. Das Ziel-Repo soll im GitHub-Unternehmen `Klickstark` liegen. Das Anlegen unter `Klickstark/addsales-dashboard` ist aktuell durch fehlende Org-Berechtigung für `CreateRepository` blockiert.
 
 ## Live-System
 
@@ -44,6 +44,6 @@ Der Code ist lokal als Git-Repo initialisiert. Das Ziel-Repo soll im GitHub-Unte
 - Deployment: Vercel + Convex Prod
 
 <Callout kind="warning">
-  Secrets gehoeren nie ins Repository. Lokale Werte liegen in `.env.local`, Convex-Backend-Secrets in der Convex-Umgebung.
+  Secrets gehören nie ins Repository. Lokale Werte liegen in `.env.local`, Convex-Backend-Secrets in der Convex-Umgebung.
 </Callout>
 

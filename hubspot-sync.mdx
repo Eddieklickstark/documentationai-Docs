@@ -8,11 +8,11 @@ description: Wie HubSpot-Daten erkannt, zugeordnet und in Convex geschrieben wer
 Der Sync liest:
 
 - Kontakte aus HubSpot Contacts
-- Sequenzstatus ueber kundenbezogene Contact-Properties
+- Sequenzstatus über kundenbezogene Contact-Properties
 - Calls aus HubSpot Call Engagements
 - E-Mails aus HubSpot Email Engagements
 - protokollierte Termine aus HubSpot Meeting Engagements
-- HubSpot Owners und Users fuer Agent-Mapping
+- HubSpot Owners und Users für Agent-Mapping
 
 ## Kunden-Mapping
 
@@ -37,24 +37,24 @@ contact_meeting_booked_date_<projectKey>
 
 ## Sequenzen
 
-Die Admin-Diagnose `hubspot:inspectSequenceInventory` liest echte Sequenzen ueber:
+Die Admin-Diagnose `hubspot:inspectSequenceInventory` liest echte Sequenzen über:
 
 ```text
 /automation/sequences/2026-03?userId=...
 ```
 
-Sie ordnet Sequenzen per Sequenzname, Projekt-Key und User-/Domain-Signal einem Kunden zu und zaehlt aktuelle Signale ueber:
+Sie ordnet Sequenzen per Sequenzname, Projekt-Key und User-/Domain-Signal einem Kunden zu und zählt aktuelle Signale über:
 
 ```text
 hs_latest_sequence_enrolled
 hs_sequences_is_enrolled
 ```
 
-## Historische Einschraenkung
+## Historische Einschränkung
 
-Wenn Leads aus einer HubSpot-Sequenz entfernt wurden, ist die exakte historische Mitgliedschaft pro konkreter Sequenz nicht immer nachtraeglich verfuegbar.
+Wenn Leads aus einer HubSpot-Sequenz entfernt wurden, ist die exakte historische Mitgliedschaft pro konkreter Sequenz nicht immer nachträglich verfügbar.
 
-Fuer historische Sprints sind deshalb die kundenweiten AddSales-Properties die belastbare Quelle:
+Für historische Sprints sind deshalb die kundenweiten AddSales-Properties die belastbare Quelle:
 
 ```text
 contact_enrolled_in_sequence_date_<projectKey>
@@ -80,7 +80,7 @@ BCA bleibt `workflow_mapping_required`, weil dort Workflow-Signale statt normale
 
 ## Calls und E-Mails
 
-Calls und E-Mails werden ueber zwei Wege gelesen:
+Calls und E-Mails werden über zwei Wege gelesen:
 
 1. Contact-Associations bereits synchronisierter Kontakte.
 2. Sprintweite Suche nach erkannten Activity-Actors.
@@ -92,11 +92,11 @@ Ein Activity-Actor wird akzeptiert, wenn einer dieser Punkte passt:
 - Name/E-Mail passt zu Kunde, `projectKey` oder `sequenceNameIncludes`
 - Owner einer HubSpot-Sequenz, deren Name zum Kunden passt
 
-Geschrieben wird eine Activity nur, wenn sie mit einem synchronisierten Kundenkontakt verbunden ist, im Sprint-Zeitraum liegt und outbound/gesendet ist. Kontakte, die nur ueber eine Activity gefunden werden, werden nur nachgeladen, wenn sie ein kundenbezogenes Mapping-Signal tragen. Damit wird verhindert, dass derselbe Lead bei mehreren Kunden falsch zugeordnet wird.
+Geschrieben wird eine Activity nur, wenn sie mit einem synchronisierten Kundenkontakt verbunden ist, im Sprint-Zeitraum liegt und outbound/gesendet ist. Kontakte, die nur über eine Activity gefunden werden, werden nur nachgeladen, wenn sie ein kundenbezogenes Mapping-Signal tragen. Damit wird verhindert, dass derselbe Lead bei mehreren Kunden falsch zugeordnet wird.
 
-Wenn ein akzeptierter Activity-Actor noch kein `customerAgent` ist, erzeugt Convex fuer den Sprint trotzdem eine eigene `sprintSequence` auf Basis von HubSpot Owner/User/E-Mail. So werden Activities von internen Sequenz-Ownern nicht mehr als unzugeordnet gesammelt.
+Wenn ein akzeptierter Activity-Actor noch kein `customerAgent` ist, erzeugt Convex für den Sprint trotzdem eine eigene `sprintSequence` auf Basis von HubSpot Owner/User/E-Mail. So werden Activities von internen Sequenz-Ownern nicht mehr als unzugeordnet gesammelt.
 
-Der Write laeuft eventlimitiert in Chunks, damit grosse Kunden nicht an Convex Read-Limits scheitern.
+Der Write läuft eventlimitiert in Chunks, damit große Kunden nicht an Convex Read-Limits scheitern.
 
 Aktueller Fix-Stand:
 
