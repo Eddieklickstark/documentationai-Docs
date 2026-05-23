@@ -1,0 +1,65 @@
+---
+title: Betrieb
+description: Deployment, Tests, Sync-Betrieb und Pflege der Dokumentation.
+---
+
+## GitHub
+
+App-Code:
+
+```text
+Lokaler Pfad:
+/Users/eddieesche/Documents/Codex/2026-05-21/wir-wollen-ein-product-bauen-das
+
+Gewuenschtes Ziel:
+Klickstark/addsales-dashboard
+```
+
+Das lokale Repository ist angelegt und committed. Das Erstellen im GitHub-Unternehmen `Klickstark` ist aktuell blockiert, weil der Account `Eddieklickstark` keine `CreateRepository` Berechtigung im Org hat.
+
+## Dokumentation
+
+Diese Dokumentation liegt im GitHub-Repo:
+
+```text
+Eddieklickstark/documentationai-Docs
+```
+
+Pflegeweg:
+
+1. Markdown/MDX direkt im GitHub-Repo aktualisieren
+2. Commit und Push
+3. documentation.ai synchronisiert aus dem Repo
+
+Direktes Arbeiten im GitHub-Repo ist bevorzugt gegenueber einer documentation.ai API, weil Aenderungen versioniert, reviewbar und wiederholbar sind.
+
+## Pruefkommandos
+
+```bash
+npm run build
+npm run lint
+npm run test:metrics
+CONVEX_DEPLOYMENT=prod:posh-ibex-42 npm run test:convex-smoke
+```
+
+Bekannte Lint-Warnungen:
+
+- generierte Convex-Dateien melden ungenutzte `eslint-disable` Direktiven
+
+## Regelmaessiger Sync
+
+`convex/crons.ts` startet den HubSpot Sync alle 60 Minuten.
+
+Der Sync soll inkrementell neue Daten ergaenzen. Fuer historische Nachlaeufe gibt es gezielte Diagnose- und Backfill-Actions in `convex/hubspot.ts`.
+
+## Pflege-Regel
+
+Bei jeder relevanten Code-Aenderung wird diese Doku aktualisiert:
+
+- neue Routen
+- neue Convex Actions/Queries/Mutations
+- neue Env-Variablen
+- Veraenderungen am HubSpot Mapping
+- Security- oder Auth-Aenderungen
+- bekannte offene Risiken
+

@@ -38,6 +38,16 @@
                 "title": "Features",
                 "path": "features",
                 "icon": "file-text"
+              },
+              {
+                "title": "Architecture",
+                "path": "architecture",
+                "icon": "server"
+              },
+              {
+                "title": "Security",
+                "path": "security",
+                "icon": "shield"
               }
             ]
           },
@@ -49,6 +59,16 @@
                 "title": "Integrations",
                 "path": "integrations",
                 "icon": "plug"
+              },
+              {
+                "title": "HubSpot Sync",
+                "path": "hubspot-sync",
+                "icon": "database"
+              },
+              {
+                "title": "Operations",
+                "path": "operations",
+                "icon": "settings"
               }
             ]
           }

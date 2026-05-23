@@ -1,64 +1,31 @@
 ---
 title: Changelog
-description: Track recent product updates, new features, and improvements to the addsales Dashboard.
+description: Laufende technische Aenderungen am AddSales Dashboard.
 ---
 
-## Recent Updates
+## 2026-05-24
 
-You can review the latest changes to the addsales Dashboard below. Each release focuses on delivering a fuller pipeline through better analytics, outreach tools, and AI-driven insights.
+<Update label="2026-05-24" description="Doku und Repository-Vorbereitung" tags={["documentation", "github"]}>
 
-<Callout kind="info">
-  The addsales Dashboard now supports real-time synchronization with your CRM. Update your integration settings to enable it.
-</Callout>
-
-<Update label="2024-10-12" description="v2.3.0" tags={["feature", "improvement"]}>
-## New Features
-- Added AI-powered lead scoring that analyzes call recordings and email responses automatically.
-- Introduced a new pipeline visualization board with drag-and-drop stage management.
-
-## Improvements
-- Reduced dashboard load time by 40 percent through optimized queries.
-- Enhanced LinkedIn outreach templates with dynamic personalization tokens.
+- App-Code lokal als Git-Repo initialisiert.
+- Initialer Commit `Initial AddSales dashboard app` erstellt.
+- Doku aus dem App-Repo in `documentationai-Docs` uebertragen.
+- Architektur-, HubSpot-Sync-, Security- und Betriebsseiten ergaenzt.
+- Repo-Erstellung unter `Klickstark/addsales-dashboard` versucht; blockiert durch fehlende Org-Berechtigung `CreateRepository`.
 
 </Update>
 
-<Update label="2024-09-28" description="v2.2.1" tags={["bugfix", "improvement"]}>
-## Bug Fixes
-- Fixed an issue where closing enablement reports failed to export for teams larger than 15 users.
-- Resolved a synchronization error between the dashboard and external telephony providers.
+## 2026-05-23
 
-## Improvements
-- Updated the technology setup wizard to include one-click deployment for popular CRMs.
-- Improved mobile responsiveness for the sales analytics view.
+<Update label="2026-05-23" description="Kundenlogin, HubSpot Sync und Sprintdaten" tags={["auth", "hubspot", "dashboard"]}>
 
-</Update>
-
-<Update label="2024-09-05" description="v2.2.0" tags={["feature"]}>
-## New Features
-- Launched the Kaltakquise performance tracker that measures outreach success across phone, email, and LinkedIn channels.
-- Added custom alert rules for when pipeline velocity drops below your defined threshold.
+- Kunden-Magic-Link als echte Convex Session umgesetzt.
+- Demo-Fallbacks aus Live-Modus entfernt.
+- Sprintdetail nutzt konkrete Sprint-ID aus Convex.
+- Sprintzeilen werden aus echten `sprints` geladen.
+- HubSpot Backfill fuer historische Sprints angestossen.
+- Sequence Inventory fuer echte HubSpot-Sequenzen aufgebaut.
+- BCA als `workflow_mapping_required` markiert.
 
 </Update>
 
-## Version History
-
-You can explore a summary of past releases in the table below.
-
-| Version | Date       | Highlights                          |
-|---------|------------|-------------------------------------|
-| v2.1.0  | 2024-08-15 | Initial AI closing enablement tools |
-| v2.0.0  | 2024-07-20 | Full dashboard redesign             |
-| v1.9.5  | 2024-06-10 | Performance and stability updates   |
-
-## Next Steps
-
-<Columns cols={2}>
-  <Card title="Quickstart Guide" icon="book-open" href="/quickstart" horizontal>
-    Set up your first sales campaign in minutes.
-  </Card>
-  <Card title="API Reference" icon="code" href="/api-reference" horizontal>
-    Integrate the dashboard with your existing tools.
-  </Card>
-</Columns>
-
-Check back regularly for new releases that help you maximize your sales pipeline.

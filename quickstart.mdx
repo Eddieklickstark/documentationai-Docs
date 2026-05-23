@@ -1,90 +1,67 @@
 ---
 title: Quickstart
-description: Get your account set up and complete your first pipeline analysis or outreach campaign in under 10 minutes.
+description: Lokales Setup, Build und erste Checks fuer das AddSales Dashboard.
 ---
 
-## Prerequisites
+## Voraussetzungen
 
-<Callout kind="info">
-  Before you begin, ensure you have a valid email address and access to your CRM credentials (Salesforce, HubSpot, or Pipedrive). The entire setup takes less than 10 minutes.
-</Callout>
+- Node.js und npm
+- GitHub CLI (`gh`) fuer Repository-Arbeit
+- Convex CLI ueber `npx convex`
+- Zugriff auf Clerk, Convex, Vercel und HubSpot fuer produktive Deployments
 
-## Step 1: Create Your Account
+## Lokales Setup
 
-Navigate to the [addsales Dashboard](https://dashboard.example.com) and sign up with your work email. You will receive a verification link instantly.
+```bash
+npm install
+npm run build
+npm run lint
+npm run test:metrics
+```
 
-After confirming your email, set a strong password and accept the terms. Your workspace is created automatically.
+Fuer Convex-Smoke-Tests gegen Prod:
 
-## Step 2: Connect Your CRM
+```bash
+CONVEX_DEPLOYMENT=prod:posh-ibex-42 npm run test:convex-smoke
+```
 
-Use the integration wizard to link your data sources.
+## Lokale Env
 
-<Tabs>
-  <Tab title="Salesforce" icon="cloud">
-    Enter your Salesforce instance URL and generate an OAuth token.
+Frontend-Variablen:
 
-````bash
-curl -X POST https://api.example.com/integrations/salesforce \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"instance_url": "https://yourcompany.salesforce.com"}'
-````
-  </Tab>
-  <Tab title="HubSpot" icon="database">
-    Provide your HubSpot API key and select the pipelines to sync.
+```text
+VITE_CONVEX_URL=
+VITE_CLERK_PUBLISHABLE_KEY=
+```
 
-````bash
-curl -X POST https://api.example.com/integrations/hubspot \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{"api_key": "your-hubspot-key"}'
-````
-  </Tab>
-</Tabs>
+Backend-Secrets liegen nicht im Frontend und werden in Convex gesetzt:
 
-## Step 3: Run Your First Analysis
+```text
+CLERK_JWT_ISSUER_DOMAIN=
+ADMIN_EMAILS=
+ADMIN_EMAIL_DOMAINS=addsales.io
+HUBSPOT_PRIVATE_APP_TOKEN=
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=
+```
 
-Once connected, trigger an initial sales structure analysis.
+## Development Server
 
-<Steps>
-  <Step title="Select Data Range" icon="bar-chart">
-    Choose the last 90 days of deals and leads from the dropdown.
-  </Step>
-  <Step title="Configure Parameters" icon="settings">
-    Enable AI scoring and set your target close rate to 25%.
-  </Step>
-  <Step title="Execute Analysis" icon="play-circle">
-    Click **Run Analysis**. Results appear in under 60 seconds.
+```bash
+npm run dev
+```
 
-````json
-{
-  "analysis_id": "ana_9k2mX7pQ",
-  "pipeline_health": 78,
-  "opportunities": 142,
-  "bottleneck_stage": "qualification"
-}
-````
-  </Step>
-</Steps>
+## Deployment
 
-## Step 4: Navigate the Dashboard
+Convex Functions:
 
-The main views include:
+```bash
+CONVEX_DEPLOYMENT=prod:posh-ibex-42 npx convex deploy
+```
 
-<Columns cols={2}>
-  <Card title="Pipeline Overview" icon="bar-chart" href="#pipeline">
-    Real-time funnel visualization with AI recommendations.
-  </Card>
-  <Card title="Outreach Campaigns" icon="send" href="#campaigns">
-    Manage hyper-personalized sequences across channels.
-  </Card>
-</Columns>
+Frontend:
 
-## Next Steps
+- Vercel nutzt das GitHub-Repository.
+- Build-Befehl: `npm run build`
+- Output: `dist`
 
-<Columns cols={2}>
-  <Card title="Explore Services" icon="book-open" href="/introduction" horizontal>
-    Learn about analysis, cold outreach, and closing enablement.
-  </Card>
-  <Card title="API Reference" icon="code" href="/authentication" horizontal>
-    Authenticate requests and explore all endpoints.
-  </Card>
-</Columns>

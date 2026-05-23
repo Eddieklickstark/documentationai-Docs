@@ -1,40 +1,49 @@
 ---
-title: Introduction
-description: Overview of the addsales Dashboard (Vantum), its key features for sales pipeline optimization, and how it helps teams achieve measurable results.
+title: AddSales Dashboard
+description: Produktdokumentation fuer das AddSales Kunden- und Admin-Dashboard.
 ---
 
-<Image src="https://blob-cdn.documentation.ai/org-2ebb2ef5-dd91-493f-9938-283fbdb14c81/doc-d2a73d2e-4391-4446-a5c8-2d0b41b7c4c1/1774416350161-ay106tw0elt-Image-3.png?q=85&fm=auto&auto=compress%2Cformat" alt="addsales Dashboard documentation" width="800" height="400" />
+## Ueberblick
 
-## Welcome to addsales Dashboard
+Das AddSales Dashboard ist die zentrale Oberflaeche fuer interne AddSales-Admins und eingeladene Kunden.
 
-The addsales Dashboard (Vantum) gives you full visibility into your sales pipeline. Turn data into decisions and hit your targets faster.
+Interne Nutzer sehen alle Kundendashboards, legen neue Dashboards an, pruefen HubSpot-Syncs und teilen Kundenlinks. Kunden sehen nur ihr eigenes Dashboard mit Sprint-Fortschritt, Leads, Terminen und Aktivitaeten.
 
 <Columns cols={2}>
-  <Card title="Analyse" icon="bar-chart" href="/quickstart">
-    Analyze your current sales structures and uncover hidden opportunities.
+  <Card title="Admin Dashboard" icon="shield">
+    Verwaltung von Kunden, Sprints, Einladungen, Sync-Status und HubSpot-Mapping.
   </Card>
-  <Card title="Sales Outsourcing" icon="users" href="/quickstart">
-    Run hyper-personalized outreach via phone, email, and LinkedIn.
+  <Card title="Kundendashboard" icon="layout-dashboard">
+    Kundenansicht mit Magic-Link Login, Sprintmetriken, Leadtabellen und Terminen.
   </Card>
-  <Card title="Closing Enablement" icon="check-circle" href="/quickstart">
-    Improve win rates with proven closing processes and coaching.
+  <Card title="HubSpot Sync" icon="database">
+    Kontakte, Sequenzen, Calls, E-Mails und protokollierte Termine aus HubSpot.
   </Card>
-  <Card title="Technologie-Setup" icon="settings" href="/quickstart">
-    Integrate the latest AI tools to maximize your team's efficiency.
+  <Card title="Convex Backend" icon="server">
+    Realtime-Datenbank, serverseitige Auth-Pruefung und stuendlicher Sync.
   </Card>
 </Columns>
 
-## Explore more
+## Repository
 
-<Columns cols={2}>
-  <Card title="Quickstart" icon="book-open" href="/quickstart" horizontal>
-    Get up and running in minutes.
-  </Card>
-  <Card title="Authentication" icon="lock" href="/authentication" horizontal>
-    Secure access and API setup.
-  </Card>
-</Columns>
+Der aktuelle Code liegt lokal unter:
 
-<Callout kind="tip">
-  This documentation was generated as a starter kit. Customize the content to match your product.
+```text
+/Users/eddieesche/Documents/Codex/2026-05-21/wir-wollen-ein-product-bauen-das
+```
+
+Der Code ist lokal als Git-Repo initialisiert. Das Ziel-Repo soll im GitHub-Unternehmen `Klickstark` liegen. Das Anlegen unter `Klickstark/addsales-dashboard` ist aktuell durch fehlende Org-Berechtigung fuer `CreateRepository` blockiert.
+
+## Live-System
+
+- Frontend: Vite + React
+- Backend: Convex
+- Auth: Clerk
+- CRM: HubSpot
+- Mail: Resend
+- Deployment: Vercel + Convex Prod
+
+<Callout kind="warning">
+  Secrets gehoeren nie ins Repository. Lokale Werte liegen in `.env.local`, Convex-Backend-Secrets in der Convex-Umgebung.
 </Callout>
+

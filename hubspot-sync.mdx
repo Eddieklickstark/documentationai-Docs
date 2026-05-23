@@ -1,0 +1,84 @@
+---
+title: HubSpot Sync
+description: Wie HubSpot-Daten erkannt, zugeordnet und in Convex geschrieben werden.
+---
+
+## Sync-Quellen
+
+Der Sync liest:
+
+- Kontakte aus HubSpot Contacts
+- Sequenzstatus ueber kundenbezogene Contact-Properties
+- Calls aus HubSpot Call Engagements
+- E-Mails aus HubSpot Email Engagements
+- protokollierte Termine aus HubSpot Meeting Engagements
+- HubSpot Owners und Users fuer Agent-Mapping
+
+## Kunden-Mapping
+
+Jeder Kunde hat einen `projectKey`, zum Beispiel:
+
+- `gigagreen`
+- `bca`
+- `consecur`
+- `holman`
+- `plan_d`
+- `eyeable`
+- `atmoce`
+
+Daraus folgen Properties wie:
+
+```text
+contact_<projectKey>_status
+contact_enrolled_in_sequence_date_<projectKey>
+contact_unenrolled_from_sequence_date_<projectKey>
+contact_meeting_booked_date_<projectKey>
+```
+
+## Sequenzen
+
+Die Admin-Diagnose `hubspot:inspectSequenceInventory` liest echte Sequenzen ueber:
+
+```text
+/automation/sequences/2026-03?userId=...
+```
+
+Sie ordnet Sequenzen per Sequenzname, Projekt-Key und User-/Domain-Signal einem Kunden zu und zaehlt aktuelle Signale ueber:
+
+```text
+hs_latest_sequence_enrolled
+hs_sequences_is_enrolled
+```
+
+## Historische Einschraenkung
+
+Wenn Leads aus einer HubSpot-Sequenz entfernt wurden, ist die exakte historische Mitgliedschaft pro konkreter Sequenz nicht immer nachtraeglich verfuegbar.
+
+Fuer historische Sprints sind deshalb die kundenweiten AddSales-Properties die belastbare Quelle:
+
+```text
+contact_enrolled_in_sequence_date_<projectKey>
+contact_unenrolled_from_sequence_date_<projectKey>
+contact_meeting_booked_date_<projectKey>
+```
+
+## Aktueller Diagnose-Stand
+
+Letzte Inventur:
+
+| Kunde | Sequenzen | Latest Kontakte | Aktive Kontakte |
+| --- | ---: | ---: | ---: |
+| Eyeable | 17 | 4522 | 800 |
+| GIGA.GREEN | 16 | 3755 | 489 |
+| Consecur | 8 | 551 | 185 |
+| Holman | 8 | 2128 | 610 |
+| Plan D | 7 | 1099 | 225 |
+| Atmoce | 3 | 409 | 144 |
+| BCA | 1 | 222 | 67 |
+
+BCA bleibt `workflow_mapping_required`, weil dort Workflow-Signale statt normaler Contact-Sequence-Properties relevant sind.
+
+## Bekannter offener Block
+
+Leads und Termine werden geschrieben. Calls/E-Mails bleiben im historischen Backfill aktuell bei `0`. Das deutet auf eine noch nicht finale Zuordnung ueber HubSpot Owner/User/Associations hin und ist der naechste Sync-Blocker.
+

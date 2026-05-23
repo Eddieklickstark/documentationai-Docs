@@ -1,0 +1,53 @@
+---
+title: Architektur
+description: Technische Struktur des AddSales Dashboards.
+---
+
+## Stack
+
+- React + Vite fuer das Frontend
+- Convex fuer Datenbank, Queries, Mutations, Actions und Cronjobs
+- Clerk fuer Authentifizierung
+- HubSpot fuer CRM-Daten
+- Resend fuer E-Mail Versand
+- Vercel fuer Frontend Deployment
+
+## Wichtige Codebereiche
+
+```text
+src/App.tsx                 Haupt-App, Routing und Screens
+src/App.css                 UI Styling
+src/lib/metrics.ts          Sprint- und Statusmetriken
+src/lib/convexDashboard.ts  Frontend-Dashboard-Helfer
+convex/dashboard.ts         Kunden-/Admin-Dashboard Queries
+convex/access.ts            Invite, Magic Link und Kundensessions
+convex/hubspot.ts           HubSpot Sync und Diagnoseactions
+convex/schema.ts            Datenmodell
+convex/crons.ts             Stuendlicher HubSpot Sync
+docs/dashboard.md           Technische Projektdoku im App-Repo
+```
+
+## Datenfluss
+
+```text
+HubSpot -> Convex HubSpot Actions -> Convex Tabellen -> React Dashboard
+Clerk   -> Convex Auth/AuthZ       -> Admin- und Kundenzugriff
+Resend  -> Invite/Magic Link Mail  -> Customer Session
+```
+
+## Zentrale Tabellen
+
+- `customers`
+- `customerHubspotMappings`
+- `customerAgents`
+- `dashboardInvites`
+- `magicLinks`
+- `customerSessions`
+- `sprints`
+- `leads`
+- `leadSequenceMemberships`
+- `leadActivities`
+- `appointments`
+- `dailySprintSnapshots`
+- `hubspotSyncRuns`
+
