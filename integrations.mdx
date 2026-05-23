@@ -1,0 +1,99 @@
+---
+title: Integrations & CRM Setup
+description: Connect the dashboard with your existing CRM, telephony tools, and AI services to maximize team efficiency.
+---
+
+## Overview
+
+The addsales Dashboard connects directly to your existing tools so your sales team stays focused on closing deals instead of switching between platforms. You can sync data from CRMs, automate outreach through telephony and LinkedIn, and receive real-time updates via webhooks.
+
+## Supported CRM Platforms
+
+Choose from these native integrations to keep your pipeline data synchronized in both directions.
+
+<Columns cols={2}>
+  <Card title="HubSpot" icon="users" href="#hubspot-setup">
+    Two-way sync for contacts, deals, and activities with automatic field mapping.
+  </Card>
+  <Card title="Salesforce" icon="database" href="#salesforce-setup">
+    Enterprise-grade sync including custom objects and opportunity stages.
+  </Card>
+  <Card title="Pipedrive" icon="bar-chart" href="#pipedrive-setup">
+    Real-time deal updates and activity logging without custom development.
+  </Card>
+  <Card title="Close" icon="phone" href="#close-setup">
+    Native telephony integration with call recording and outcome tracking.
+  </Card>
+</Columns>
+
+## Setting Up Telephony and LinkedIn Connectors
+
+Follow these steps to enable outbound calling and LinkedIn messaging directly from the dashboard.
+
+<Steps>
+  <Step title="Connect your telephony provider" icon="phone">
+    Navigate to Integrations, select Telephony, and choose your provider. Enter your API credentials.
+
+    ````bash
+    curl -X POST https://api.addsales.io/v1/telephony/connect \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -d '{"provider": "aircall", "account_id": "acc_12345"}'
+    ````
+  </Step>
+  <Step title="Authorize LinkedIn" icon="linkedin">
+    Go to the LinkedIn tab and click Connect. Grant the required permissions for messaging and profile data.
+
+    The connector supports up to 500 personalized messages per day per user.
+  </Step>
+  <Step title="Map your fields" icon="settings">
+    Define how CRM fields map to addsales fields so every call outcome and message is logged correctly.
+  </Step>
+</Steps>
+
+## Webhook and API Integration Basics
+
+You can receive events from the dashboard using webhooks or pull data via the REST API.
+
+<Tabs>
+  <Tab title="Webhook Example" icon="webhook">
+    Configure an endpoint that receives deal updates:
+
+    ````json
+    {
+      "event": "deal.updated",
+      "timestamp": "2025-01-15T14:32:00Z",
+      "data": {
+        "deal_id": "deal_9k2m4p",
+        "stage": "negotiation",
+        "value": 45000
+      }
+    }
+    ````
+  </Tab>
+  <Tab title="API Request" icon="code">
+    Fetch the latest pipeline metrics:
+
+    ````bash
+    curl https://api.addsales.io/v1/pipeline \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -G -d "team_id=team_abc123" -d "period=last_30_days"
+    ````
+  </Tab>
+</Tabs>
+
+<Callout kind="info">
+  Always validate webhook signatures using the `X-AddSales-Signature` header to prevent unauthorized requests.
+</Callout>
+
+## Best Practices for Tech Stack Optimization
+
+Keep your integrations healthy with these recommendations:
+
+- Use OAuth where available instead of static API keys.
+- Enable real-time sync only for fields that change frequently.
+- Monitor webhook delivery logs weekly and set up retry alerts.
+- Combine AI-powered lead scoring with your CRM data for better prioritization.
+
+<Expandable title="Advanced: Custom field mapping" default-open="false">
+  When standard mappings are not enough, you can define custom transformations using JavaScript functions in the dashboard settings. This lets you normalize phone numbers or calculate weighted scores before syncing.
+</Expandable>

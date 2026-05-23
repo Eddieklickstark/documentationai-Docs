@@ -1,0 +1,91 @@
+---
+title: Core Features
+description: Detailed walkthrough of the main capabilities including pipeline analysis, outreach automation, closing enablement, and technology integrations.
+---
+
+## Overview
+
+The addsales Dashboard gives you complete control over your sales pipeline. You can analyze existing structures, automate hyper-personalized outreach, run structured closing processes, and connect the latest AI tools. Each feature works together so you always maintain a full pipeline.
+
+<Callout kind="info">
+  Start with pipeline analysis to identify gaps before launching outreach campaigns.
+</Callout>
+
+## Sales Structure Analysis Tools
+
+You begin by mapping your current sales process. The analysis module highlights bottlenecks, conversion rates, and lead quality across all stages.
+
+<Columns cols={2}>
+  <Card title="Pipeline Health Check" icon="bar-chart" href="#pipeline">
+    View real-time metrics for every deal stage.
+  </Card>
+  <Card title="Lead Scoring" icon="target" href="#scoring">
+    Automatically rank prospects by conversion probability.
+  </Card>
+</Columns>
+
+## Hyper-Personalized Outreach Management
+
+You manage all outreach channels from one dashboard. The system generates personalized sequences for phone, email, and LinkedIn based on prospect data.
+
+<Tabs>
+  <Tab title="Phone" icon="phone">
+    Scripts adapt dynamically using previous call notes and company research.
+  </Tab>
+  <Tab title="Email" icon="mail">
+    Subject lines and body text are generated from CRM fields and recent activity.
+  </Tab>
+  <Tab title="LinkedIn" icon="linkedin">
+    Connection requests and follow-ups reference mutual connections and posts.
+  </Tab>
+</Tabs>
+
+## Closing Enablement Workflows
+
+You follow a proven closing process that increases win rates. The workflow guides you through objection handling, proposal delivery, and contract finalization.
+
+<Steps>
+  <Step title="Qualify" icon="check-circle">
+    Confirm budget, authority, need, and timeline before moving forward.
+  </Step>
+  <Step title="Present" icon="file-text">
+    Send tailored proposals with ROI calculations pulled from your data.
+  </Step>
+  <Step title="Close" icon="award">
+    Use tracked contracts and automated reminders to finalize deals faster.
+  </Step>
+</Steps>
+
+## AI-Powered Efficiency Features
+
+You connect AI tools directly inside the dashboard to speed up repetitive tasks.
+
+````jsx
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+const response = await fetch('https://api.example.com/ai/sequence', {
+  method: 'POST',
+  headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+  body: JSON.stringify({ prospectId: 'lead_123' })
+});
+```
+```python
+import requests
+response = requests.post(
+    'https://api.example.com/ai/sequence',
+    headers={'Authorization': 'Bearer YOUR_API_KEY'},
+    json={'prospectId': 'lead_123'}
+)
+```
+</CodeGroup>
+````
+
+## Advanced Configuration
+
+You can fine-tune automation rules and notification settings for your team.
+
+<Expandable title="Custom Scoring Weights" default-open="false">
+  Adjust how the system weighs factors such as company size, industry, and engagement history.
+</Expandable>
+
+These core features work together to keep your pipeline full and your sales process efficient.

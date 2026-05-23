@@ -1,0 +1,90 @@
+---
+title: Quickstart
+description: Get your account set up and complete your first pipeline analysis or outreach campaign in under 10 minutes.
+---
+
+## Prerequisites
+
+<Callout kind="info">
+  Before you begin, ensure you have a valid email address and access to your CRM credentials (Salesforce, HubSpot, or Pipedrive). The entire setup takes less than 10 minutes.
+</Callout>
+
+## Step 1: Create Your Account
+
+Navigate to the [addsales Dashboard](https://dashboard.example.com) and sign up with your work email. You will receive a verification link instantly.
+
+After confirming your email, set a strong password and accept the terms. Your workspace is created automatically.
+
+## Step 2: Connect Your CRM
+
+Use the integration wizard to link your data sources.
+
+<Tabs>
+  <Tab title="Salesforce" icon="cloud">
+    Enter your Salesforce instance URL and generate an OAuth token.
+
+````bash
+curl -X POST https://api.example.com/integrations/salesforce \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"instance_url": "https://yourcompany.salesforce.com"}'
+````
+  </Tab>
+  <Tab title="HubSpot" icon="database">
+    Provide your HubSpot API key and select the pipelines to sync.
+
+````bash
+curl -X POST https://api.example.com/integrations/hubspot \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"api_key": "your-hubspot-key"}'
+````
+  </Tab>
+</Tabs>
+
+## Step 3: Run Your First Analysis
+
+Once connected, trigger an initial sales structure analysis.
+
+<Steps>
+  <Step title="Select Data Range" icon="bar-chart">
+    Choose the last 90 days of deals and leads from the dropdown.
+  </Step>
+  <Step title="Configure Parameters" icon="settings">
+    Enable AI scoring and set your target close rate to 25%.
+  </Step>
+  <Step title="Execute Analysis" icon="play-circle">
+    Click **Run Analysis**. Results appear in under 60 seconds.
+
+````json
+{
+  "analysis_id": "ana_9k2mX7pQ",
+  "pipeline_health": 78,
+  "opportunities": 142,
+  "bottleneck_stage": "qualification"
+}
+````
+  </Step>
+</Steps>
+
+## Step 4: Navigate the Dashboard
+
+The main views include:
+
+<Columns cols={2}>
+  <Card title="Pipeline Overview" icon="bar-chart" href="#pipeline">
+    Real-time funnel visualization with AI recommendations.
+  </Card>
+  <Card title="Outreach Campaigns" icon="send" href="#campaigns">
+    Manage hyper-personalized sequences across channels.
+  </Card>
+</Columns>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Explore Services" icon="book-open" href="/introduction" horizontal>
+    Learn about analysis, cold outreach, and closing enablement.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication" horizontal>
+    Authenticate requests and explore all endpoints.
+  </Card>
+</Columns>
