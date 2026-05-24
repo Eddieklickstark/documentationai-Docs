@@ -90,18 +90,53 @@ Ein Activity-Actor wird akzeptiert, wenn einer dieser Punkte passt:
 - konfigurierter `customerAgent`
 - E-Mail-Domain passt zu `licenseEmailDomains`
 - Name/E-Mail passt zu Kunde, `projectKey` oder `sequenceNameIncludes`
-- Owner einer HubSpot-Sequenz, deren Name zum Kunden passt
+- Owner einer HubSpot-Sequenz, deren Name zum Kunden passt, nur wenn der Owner zusätzlich als Kunden-Agent konfiguriert ist oder über Name/E-Mail/Domain eindeutig zum Kunden passt
 
 Geschrieben wird eine Activity nur, wenn sie mit einem synchronisierten Kundenkontakt verbunden ist, im Sprint-Zeitraum liegt und outbound/gesendet ist. Kontakte, die nur über eine Activity gefunden werden, werden nur nachgeladen, wenn sie ein kundenbezogenes Mapping-Signal tragen. Damit wird verhindert, dass derselbe Lead bei mehreren Kunden falsch zugeordnet wird.
 
 Wenn ein akzeptierter Activity-Actor noch kein `customerAgent` ist, erzeugt Convex für den Sprint trotzdem eine eigene `sprintSequence` auf Basis von HubSpot Owner/User/E-Mail. So werden Activities von internen Sequenz-Ownern nicht mehr als unzugeordnet gesammelt.
 
-Der Write läuft eventlimitiert in Chunks, damit große Kunden nicht an Convex Read-Limits scheitern.
+Der Write läuft eventlimitiert in Chunks, damit große Kunden nicht an Convex Read-Limits scheitern. HubSpot-Lesezugriffe laufen mit Timeout und Retry, damit einzelne langsame HubSpot-Antworten keinen kompletten Backfill abbrechen.
 
-Aktueller Fix-Stand:
+## Idempotenz
 
-| Kunde | Aktueller Sprint | Activities | Calls | E-Mails | Termine |
-| --- | --- | ---: | ---: | ---: | ---: |
-| Eyeable | Mai 2026 | 8022 | 5445 | 2577 | 134 |
-| Atmoce | Mai 2026 | 1466 | 822 | 644 | 42 |
-| GIGA.GREEN | Mai 2026 | 2985 | 2724 | 261 | 112 |
+HubSpot-Events werden mit einem stabilen `externalId` geschrieben. Für historische Sprints enthalten diese IDs immer Kunde und Sprint:
+
+```text
+hubspot:<projectKey>:sprint:<sprintId>:...
+```
+
+Dadurch können gleiche HubSpot-Aktivitäten bei mehreren Kunden oder Sprints nicht mehr gegenseitig überschrieben werden.
+
+## Historischer Backfill-Stand
+
+Stand: 2026-05-24, Convex Prod `prod:posh-ibex-42`.
+
+Alle Sequenz-Kunden wurden für Januar bis Mai 2026 geprüft. Leere Monate sind im aktuellen Mapping wirklich ohne gefundene Daten. BCA bleibt `workflow_mapping_required`, weil dort Workflow-Signale statt normaler Sequenz-Properties relevant sind.
+
+| Kunde | Sprint | Leads | Memberships | Activities | Calls | E-Mails | Termine |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Atmoce | Apr 2026 | 91 | 71 | 62 | 0 | 62 | 38 |
+| Atmoce | Mai 2026 | 376 | 369 | 1466 | 822 | 644 | 42 |
+| Consecur | März 2026 | 86 | 2 | 405 | 405 | 0 | 0 |
+| Consecur | Apr 2026 | 269 | 251 | 831 | 614 | 217 | 17 |
+| Consecur | Mai 2026 | 3829 | 556 | 1020 | 787 | 233 | 21 |
+| Eyeable | Feb 2026 | 2 | 0 | 3 | 3 | 0 | 0 |
+| Eyeable | März 2026 | 1396 | 1211 | 4389 | 3002 | 1387 | 60 |
+| Eyeable | Apr 2026 | 2214 | 2063 | 8293 | 5597 | 2696 | 221 |
+| Eyeable | Mai 2026 | 2459 | 2323 | 8022 | 5445 | 2577 | 134 |
+| GIGA.GREEN | Feb 2026 | 3 | 1 | 3 | 3 | 0 | 0 |
+| GIGA.GREEN | März 2026 | 974 | 707 | 1711 | 1589 | 122 | 72 |
+| GIGA.GREEN | Apr 2026 | 1537 | 1477 | 2854 | 2591 | 263 | 103 |
+| GIGA.GREEN | Mai 2026 | 8779 | 3765 | 2985 | 2724 | 261 | 185 |
+| Holman | März 2026 | 1570 | 1450 | 5430 | 3560 | 1870 | 83 |
+| Holman | Apr 2026 | 77 | 77 | 77 | 2 | 75 | 1 |
+| Holman | Mai 2026 | 3526 | 2151 | 1920 | 1019 | 901 | 64 |
+| Plan D | Feb 2026 | 1 | 0 | 1 | 1 | 0 | 0 |
+| Plan D | März 2026 | 407 | 263 | 601 | 599 | 2 | 14 |
+| Plan D | Apr 2026 | 753 | 698 | 1743 | 1429 | 314 | 19 |
+| Plan D | Mai 2026 | 4462 | 1083 | 1421 | 1138 | 283 | 30 |
+
+## Offener Mapping-Fall
+
+BCA wird aktuell nicht über den Sequenzpfad synchronisiert. Für BCA muss ein eigenes Workflow-Mapping ergänzt werden, das die passenden Workflow-Trigger, Kontakt-Properties und Termin-Signale sauber auf Sprints abbildet.

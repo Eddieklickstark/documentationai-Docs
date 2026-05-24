@@ -5,6 +5,16 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 
 ## 2026-05-24
 
+<Update label="2026-05-24" description="Historischer HubSpot Backfill abgeschlossen" tags={["hubspot", "backfill", "convex"]}>
+
+- Historischer Backfill für alle Sequenz-Kunden von Januar bis Mai 2026 geprüft und gefüllt.
+- ISO-Sprintdaten aus Convex werden vor HubSpot-Queries normalisiert, damit Sprint-Zeiträume nicht mehr leer laufen.
+- HubSpot-Activities und Termine nutzen jetzt Kunde- und Sprint-gescopte `externalId`s, damit historische Läufe sich nicht gegenseitig überschreiben.
+- Actor-Matching gehärtet: Sequenz-Owner zählen nur noch, wenn sie als Kunden-Agent konfiguriert sind oder eindeutig über Name/E-Mail/Domain zum Kunden passen.
+- BCA bleibt bewusst als `workflow_mapping_required` offen, weil dort ein Workflow-Mapping statt normalem Sequenz-Mapping nötig ist.
+
+</Update>
+
 <Update label="2026-05-24" description="Dokumentationsstil festgelegt" tags={["documentation", "changelog"]}>
 
 - Bestehende documentation.ai-Seiten auf echte deutsche Umlaute umgestellt.
