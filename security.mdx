@@ -47,3 +47,5 @@ Der Flow erzeugt eine echte `customerSessions` Session in Convex. Das Frontend s
 Für die Produktionsdomain `addsales.io` müssen Clerk DNS Records exakt gesetzt und danach in Clerk verifiziert werden.
 
 E-Mail-DNS für Clerk nutzt Subdomains wie `clkmail.addsales.io` und DKIM-Subdomains. Diese Records beeinflussen Microsoft Mail für die Hauptdomain nicht, solange MX/SPF der Hauptdomain nicht ersetzt werden.
+
+Aktueller DNS-Check: Die CNAMEs für `accounts`, `clerk`, `clkmail`, `clk._domainkey` und `clk2._domainkey` zeigen auf die Clerk-Ziele. Falls `https://clerk.addsales.io` noch einen TLS-Fehler zeigt, muss in Clerk die Domain-Verifizierung erneut gestartet werden, bis Clerk das Zertifikat bereitgestellt hat.
