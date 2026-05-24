@@ -3,14 +3,18 @@ title: AddSales Dashboard
 description: Produktdokumentation für das AddSales Kunden- und Admin-Dashboard.
 ---
 
-## Ueberblick
+## Überblick
 
 Das AddSales Dashboard ist die zentrale Oberfläche für interne AddSales-Admins und eingeladene Kunden.
 
 Interne Nutzer sehen alle Kundendashboards, legen neue Dashboards an, prüfen HubSpot-Syncs und teilen Kundenlinks. Kunden sehen nur ihr eigenes Dashboard mit Sprint-Fortschritt, Leads, Terminen und Aktivitäten.
 
+<Card title="Admin Dashboard öffnen" icon="layout-dashboard" href="https://dashboards.addsales.io" target="_blank" horizontal>
+  Zurück zur produktiven Admin-Oberfläche.
+</Card>
+
 <Columns cols={2}>
-  <Card title="Admin Dashboard" icon="shield">
+  <Card title="Admin Dashboard" icon="shield" href="https://dashboards.addsales.io" target="_blank">
     Verwaltung von Kunden, Sprints, Einladungen, Sync-Status und HubSpot-Mapping.
   </Card>
   <Card title="Kundendashboard" icon="layout-dashboard">
@@ -46,4 +50,3 @@ Der Code ist lokal als Git-Repo initialisiert. Das Ziel-Repo soll im GitHub-Unte
 <Callout kind="warning">
   Secrets gehören nie ins Repository. Lokale Werte liegen in `.env.local`, Convex-Backend-Secrets in der Convex-Umgebung.
 </Callout>
-
