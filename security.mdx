@@ -9,6 +9,14 @@ Interne AddSales-Nutzer melden sich über Clerk an. Der produktive Flow ist Micr
 
 Convex prüft Admin-Zugriff serverseitig über Clerk JWT Claims, erlaubte Admin-E-Mails bzw. Domains und aktive interne Team-Einladungen.
 
+Aktuelle initiale Admins sind:
+
+- `eddie@klickstark.de`
+- `kevin@addsales.io`
+- `marvin@addsales.io`
+
+`ADMIN_EMAIL_DOMAINS` ist in Production nicht gesetzt, damit `@addsales.io` nicht automatisch pauschal Admin-Zugriff bekommt.
+
 Admins können weitere AddSales-Teammitglieder in den Einstellungen einladen. Die Einladung verschickt einen Login-Link zum Admin-Dashboard und wird in Convex als `adminTeamInvites` dokumentiert. Solange die Einladung aktiv ist, akzeptiert Convex diese E-Mail serverseitig als Admin. Entfernte Einladungen verlieren diesen Zugriff wieder.
 
 ## Kundenzugriff
