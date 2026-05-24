@@ -5,6 +5,15 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 
 ## 2026-05-24
 
+<Update label="2026-05-24" description="BCA Workflow-Setup geprüft" tags={["hubspot", "bca", "workflow"]}>
+
+- BCA als Company-Workflow-Setup bestätigt: Contact-Sequence-Properties sind leer, Company-Workflow-Properties sind befüllt.
+- Sequenz-Erkennung für kurze Projekt-Keys gehärtet, damit `bca` nicht mehr innerhalb von Wörtern wie `Webcast` matcht.
+- Bollwerk-X/Webcast wird dadurch nicht mehr fälschlich BCA zugeordnet.
+- BCA bleibt bis zur Implementierung eines Workflow-Adapters bewusst `workflow_mapping_required`.
+
+</Update>
+
 <Update label="2026-05-24" description="Clerk Microsoft-only UI geprüft" tags={["auth", "clerk", "microsoft"]}>
 
 - Convex Production Issuer geprüft: `CLERK_JWT_ISSUER_DOMAIN=https://clerk.addsales.io`.

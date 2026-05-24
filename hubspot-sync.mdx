@@ -140,3 +140,15 @@ Alle Sequenz-Kunden wurden für Januar bis Mai 2026 geprüft. Leere Monate sind 
 ## Offener Mapping-Fall
 
 BCA wird aktuell nicht über den Sequenzpfad synchronisiert. Für BCA muss ein eigenes Workflow-Mapping ergänzt werden, das die passenden Workflow-Trigger, Kontakt-Properties und Termin-Signale sauber auf Sprints abbildet.
+
+Aktueller BCA-Befund:
+
+- `contact_enrolled_in_sequence_date_bca` existiert, ist aber leer.
+- `contact_unenrolled_from_sequence_date_bca` existiert, ist aber leer.
+- `company_enrolled_in_acquisition_workflow_date_bca` ist befüllt.
+- `company_acquisition_workflow_finished_date_bca` ist befüllt.
+- `contact_bca_status` und `contact_meeting_booked_date_bca` sind befüllt.
+
+Das heißt: BCA ist fachlich ein Company-Workflow-Setup mit Contact-Status und Contact-Terminen, nicht ein normales Sequenz-Setup. Der Sync darf BCA deshalb nicht über Sequenz-Memberships backfillen.
+
+Die automatische Sequenz-Erkennung wurde außerdem gehärtet: kurze Projekt-Keys wie `bca` matchen nur noch als eigener Token. Dadurch wird ein Name wie `Webcast` nicht mehr fälschlich als BCA erkannt.
