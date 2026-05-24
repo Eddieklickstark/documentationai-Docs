@@ -5,7 +5,7 @@ description: Admin-Auth, Kundenlogin, Magic Links und Backend-Absicherung.
 
 ## Interne Nutzer
 
-Interne AddSales-Nutzer melden sich über Clerk an. Geplant ist Microsoft-only SSO und Invite-only Zugriff.
+Interne AddSales-Nutzer melden sich über Clerk an. Der produktive Flow ist Microsoft-only und invite-only.
 
 Convex prüft Admin-Zugriff serverseitig über Clerk JWT Claims und erlaubte Admin-E-Mails bzw. Domains.
 
@@ -37,4 +37,3 @@ Der Flow erzeugt eine echte `customerSessions` Session in Convex. Das Frontend s
 Für die Produktionsdomain `addsales.io` müssen Clerk DNS Records exakt gesetzt und danach in Clerk verifiziert werden.
 
 E-Mail-DNS für Clerk nutzt Subdomains wie `clkmail.addsales.io` und DKIM-Subdomains. Diese Records beeinflussen Microsoft Mail für die Hauptdomain nicht, solange MX/SPF der Hauptdomain nicht ersetzt werden.
-

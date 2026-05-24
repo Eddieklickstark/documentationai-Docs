@@ -5,6 +5,15 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 
 ## 2026-05-24
 
+<Update label="2026-05-24" description="Clerk Microsoft-only UI geprüft" tags={["auth", "clerk", "microsoft"]}>
+
+- Convex Production Issuer geprüft: `CLERK_JWT_ISSUER_DOMAIN=https://clerk.addsales.io`.
+- Vercel Production Envs für `VITE_CLERK_PUBLISHABLE_KEY`, `VITE_CONVEX_URL` und Clerk Secret sind vorhanden.
+- Login-UI auf Microsoft-only angepasst und sichtbaren Sign-up-Button entfernt.
+- Doku ergänzt: Azure Secret Value wird in Clerk genutzt, nicht die Secret ID.
+
+</Update>
+
 <Update label="2026-05-24" description="Historischer HubSpot Backfill abgeschlossen" tags={["hubspot", "backfill", "convex"]}>
 
 - Historischer Backfill für alle Sequenz-Kunden von Januar bis Mai 2026 geprüft und gefüllt.
