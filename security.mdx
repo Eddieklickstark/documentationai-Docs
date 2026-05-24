@@ -7,7 +7,9 @@ description: Admin-Auth, Kundenlogin, Magic Links und Backend-Absicherung.
 
 Interne AddSales-Nutzer melden sich über Clerk an. Der produktive Flow ist Microsoft-only und invite-only.
 
-Convex prüft Admin-Zugriff serverseitig über Clerk JWT Claims und erlaubte Admin-E-Mails bzw. Domains.
+Convex prüft Admin-Zugriff serverseitig über Clerk JWT Claims, erlaubte Admin-E-Mails bzw. Domains und aktive interne Team-Einladungen.
+
+Admins können weitere AddSales-Teammitglieder in den Einstellungen einladen. Die Einladung verschickt einen Login-Link zum Admin-Dashboard und wird in Convex als `adminTeamInvites` dokumentiert. Solange die Einladung aktiv ist, akzeptiert Convex diese E-Mail serverseitig als Admin. Entfernte Einladungen verlieren diesen Zugriff wieder.
 
 ## Kundenzugriff
 

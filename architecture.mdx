@@ -21,6 +21,7 @@ src/lib/metrics.ts          Sprint- und Statusmetriken
 src/lib/convexDashboard.ts  Frontend-Dashboard-Helfer
 convex/dashboard.ts         Kunden-/Admin-Dashboard Queries
 convex/access.ts            Invite, Magic Link und Kundensessions
+convex/authz.ts             Serverseitige Admin-Rechteprüfung
 convex/hubspot.ts           HubSpot Sync und Diagnoseactions
 convex/schema.ts            Datenmodell
 convex/crons.ts             Stündlicher HubSpot Sync
@@ -40,6 +41,7 @@ Resend  -> Invite/Magic Link Mail  -> Customer Session
 - `customers`
 - `customerHubspotMappings`
 - `customerAgents`
+- `adminTeamInvites`
 - `dashboardInvites`
 - `magicLinks`
 - `customerSessions`
@@ -50,4 +52,3 @@ Resend  -> Invite/Magic Link Mail  -> Customer Session
 - `appointments`
 - `dailySprintSnapshots`
 - `hubspotSyncRuns`
-
