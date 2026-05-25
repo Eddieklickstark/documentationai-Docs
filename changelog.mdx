@@ -15,6 +15,9 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 - Live-Clerk-Konfiguration geprüft: Production nutzt `pk_live`, JWT Template `convex` ist vorhanden und setzt `aud=convex`.
 - Mail-Flows gehärtet: Dashboard-Invites, Admin-Invites und Magic Links zeigen Provider-Fehler jetzt sichtbar an, statt bei fehlendem oder ungültigem Resend-Versand als Erfolg zu erscheinen.
 - Resend Production Check: `RESEND_API_KEY` ist gesetzt, wird von Resend aber mit `401 Unauthorized` abgelehnt. Es muss ein gültiger Resend API Key für den richtigen Account in Convex Production gesetzt werden.
+- Neuer Resend Production API Key in Convex Production gesetzt und in 1Password im Vault `Founder` als `AddSales Dashboard Resend API` gespeichert.
+- `RESEND_FROM_EMAIL` auf `AddSales <dashboard@dashboards.addsales.io>` umgestellt. Die Resend-Domain `dashboards.addsales.io` ist vorhanden, aber noch nicht per DNS verifiziert.
+- Topbar-Copy neben dem AddSales-Logo von `Dashboards` auf `Kunden Dashboards` geändert.
 - Stündlicher HubSpot-Cron queued Kundensyncs einzeln, damit ein Gesamtsync nicht mehr nach 600 Sekunden abbricht.
 
 </Update>

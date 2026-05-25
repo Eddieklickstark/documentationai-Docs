@@ -48,9 +48,19 @@ Resend versendet Dashboard-Invites und Magic Links. Provider-Events werden in `e
 Convex Production braucht dafür:
 
 - `RESEND_API_KEY`
-- `RESEND_FROM_EMAIL`, aktuell erwartet als AddSales-Absender
+- `RESEND_FROM_EMAIL`, aktuell `AddSales <dashboard@dashboards.addsales.io>`
 
 Wenn Resend den API Key mit `401 Unauthorized` ablehnt, werden Einladungen zwar in Convex angelegt, aber keine E-Mail verschickt. In diesem Fall muss ein neuer gültiger API Key aus dem richtigen Resend Account in Convex Production gesetzt werden. Nach dem Setzen sollte ein Dashboard-Invite oder Magic Link erneut getestet werden.
+
+Aktueller Stand: Der neue Production API Key ist in Convex gesetzt und in 1Password im Vault `Founder` als `AddSales Dashboard Resend API` gespeichert. Resend akzeptiert den Key. Die Domain `dashboards.addsales.io` ist in Resend vorhanden, aber noch nicht verifiziert.
+
+DNS-Records für Resend:
+
+- TXT `resend._domainkey.dashboards.addsales.io` mit `p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlhJXaCH4yNag1xga/14Yf/4QnyrP8g1KbzlFFmCweUucA6CqZqA600S6/SGxsexUA87iej9oudwr8sbR7dIWxJbKMzfLtgNKgs+n5jpJlVMQImetJIfGCE83hNE26OPdr5UmrZ+sozosfhK/UG9GGz9zBbJvrZllYP8IeTRxJ2QIDAQAB`
+- MX `send.dashboards.addsales.io` auf `feedback-smtp.eu-west-1.amazonses.com`
+- TXT `send.dashboards.addsales.io` mit `v=spf1 include:amazonses.com ~all`
+
+Nach dem Setzen der DNS-Records muss die Domain in Resend verifiziert werden. Erst danach können Mails von `dashboard@dashboards.addsales.io` zuverlässig versendet werden.
 
 ## Vercel
 
