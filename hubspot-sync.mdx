@@ -98,6 +98,12 @@ Wenn ein akzeptierter Activity-Actor noch kein `customerAgent` ist, erzeugt Conv
 
 Der Write läuft eventlimitiert in Chunks, damit große Kunden nicht an Convex Read-Limits scheitern. HubSpot-Lesezugriffe laufen mit Timeout und Retry, damit einzelne langsame HubSpot-Antworten keinen kompletten Backfill abbrechen.
 
+## Regelmäßiger Sync
+
+Der stündliche Cron queued aktuelle Kundensyncs einzeln. Dadurch läuft nicht mehr ein großer `syncAllCustomers`-Block über alle Kunden, der bei großen Datenmengen nach 600 Sekunden abbrechen kann.
+
+Nächste notwendige Härtung: Der stündliche Live-Sync muss auf echte Watermarks/Cursor umgestellt werden, sodass nur neue oder geänderte Kontakte, Calls, E-Mails und Meetings seit dem letzten erfolgreichen Sync gezogen werden. Historische Backfills bleiben separate, bewusst gestartete Jobs.
+
 ## Idempotenz
 
 HubSpot-Events werden mit einem stabilen `externalId` geschrieben. Für historische Sprints enthalten diese IDs immer Kunde und Sprint:

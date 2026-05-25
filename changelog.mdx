@@ -3,6 +3,18 @@ title: Changelog
 description: Laufende technische Änderungen am AddSales Dashboard.
 ---
 
+## 2026-05-25
+
+<Update label="2026-05-25" description="Live-Daten, Sidebar und Sync-Cron gehärtet" tags={["dashboard", "convex", "hubspot", "auth"]}>
+
+- Admin-Sidebar entschlackt: klare Bereiche für Arbeitsbereich, Kunden und Tools; alle geladenen Kunden sind direkt erreichbar.
+- Dashboard-Liste nutzt jetzt Convex Snapshot-Metriken aus dem neuesten Sprint, statt in der Übersicht leere Shell-Daten zu zeigen.
+- Frontend fällt bei Convex-/Auth-Fehlern nicht mehr still auf Demo-Daten zurück, sondern zeigt einen konkreten Live-Datenfehler.
+- Clerk-Fehler für fehlendes JWT Template `convex` wird als konkrete Setup-Meldung angezeigt.
+- Stündlicher HubSpot-Cron queued Kundensyncs einzeln, damit ein Gesamtsync nicht mehr nach 600 Sekunden abbricht.
+
+</Update>
+
 ## 2026-05-24
 
 <Update label="2026-05-24" description="Clerk Login Crash nach Microsoft Auth behoben" tags={["auth", "clerk", "production"]}>
