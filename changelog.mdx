@@ -13,6 +13,8 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 - Clerk-Fehler für fehlendes JWT Template `convex` wird als konkrete Setup-Meldung angezeigt.
 - Admin-Einstellungen zeigen Auth-/Setup-Fehler beim Laden und Versenden von Team-Einladungen sichtbar an, statt Einladungen scheinbar ohne Reaktion abbrechen zu lassen.
 - Live-Clerk-Konfiguration geprüft: Production nutzt `pk_live`, JWT Template `convex` ist vorhanden und setzt `aud=convex`.
+- Mail-Flows gehärtet: Dashboard-Invites, Admin-Invites und Magic Links zeigen Provider-Fehler jetzt sichtbar an, statt bei fehlendem oder ungültigem Resend-Versand als Erfolg zu erscheinen.
+- Resend Production Check: `RESEND_API_KEY` ist gesetzt, wird von Resend aber mit `401 Unauthorized` abgelehnt. Es muss ein gültiger Resend API Key für den richtigen Account in Convex Production gesetzt werden.
 - Stündlicher HubSpot-Cron queued Kundensyncs einzeln, damit ein Gesamtsync nicht mehr nach 600 Sekunden abbricht.
 
 </Update>

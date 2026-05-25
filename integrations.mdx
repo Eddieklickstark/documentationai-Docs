@@ -45,6 +45,13 @@ Der Sync nutzt sowohl kundenbezogene AddSales-Properties als auch CRM Engagement
 
 Resend versendet Dashboard-Invites und Magic Links. Provider-Events werden in `emailEvents` protokolliert.
 
+Convex Production braucht dafür:
+
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`, aktuell erwartet als AddSales-Absender
+
+Wenn Resend den API Key mit `401 Unauthorized` ablehnt, werden Einladungen zwar in Convex angelegt, aber keine E-Mail verschickt. In diesem Fall muss ein neuer gültiger API Key aus dem richtigen Resend Account in Convex Production gesetzt werden. Nach dem Setzen sollte ein Dashboard-Invite oder Magic Link erneut getestet werden.
+
 ## Vercel
 
 Das Frontend wird als Vite-App gebaut und über Vercel ausgeliefert. Die Convex-URL und der Clerk Publishable Key sind Frontend-Environment-Variablen.
