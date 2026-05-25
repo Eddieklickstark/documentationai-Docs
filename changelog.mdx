@@ -31,6 +31,8 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 - `Offene Termine` und `Termine in Zukunft` zählen nur noch echte zukünftige Termine relativ zum aktuellen Zeitpunkt. Der frühere fixe Vergleich gegen `2026-05-21` wurde entfernt.
 - Sprintlisten-Progress ist kompakter: Prozentwert und Soll-Hinweis sitzen jetzt direkt neben der Progressbar statt weit rechts am Spaltenrand.
 - Stündlicher HubSpot-Cron queued Kundensyncs einzeln, damit ein Gesamtsync nicht mehr nach 600 Sekunden abbricht.
+- Interne Dashboard-Navigation nutzt für Breadcrumb, Sprintliste und Sprint-Switcher jetzt Soft-Navigation. Dadurch wird die App nicht mehr neu geladen und der kurze Clerk-Login-Screen erscheint bei normalen Klicks nicht mehr.
+- `Northstar Industries` wird als HubSpot-Testunternehmen zentral ausgeblendet: in Frontend-Listen, HubSpot-Kandidaten, Kundendetail-Queries und Convex-Onboarding-Guards.
 
 </Update>
 
