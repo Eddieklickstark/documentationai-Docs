@@ -23,6 +23,7 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 - Kundenlogos in Sidebar und Dashboard-Liste nutzen jetzt die gespeicherte `websiteDomain` als Favicon-Quelle. Neue Dashboards verlangen eine Website-Domain, bekannte Bestandskunden wurden in Convex nachgezogen; der Fallback ist neutral statt grüner Initialen.
 - `Offene Termine` ist in der Admin-Sidebar jetzt als Unteraktion des aktiven Kunden platziert. Globale Admin-Links wie Dokumentation und Einstellungen stehen getrennt im Bereich `Admin`.
 - Klick auf das AddSales-Logo im Admin-Header führt wieder zurück zur Kunden-Dashboard-Übersicht.
+- Sprint-Tag-Anzeigen und Pace-Berechnungen nutzen jetzt echte Kalender-Arbeitstage im aktuellen Sprintfenster statt die Anzahl gespeicherter Daily-Snapshots. Dadurch zeigt ein Mai-Sprint am 25.05. korrekt `Tag 17/21` statt `Tag 2/21`.
 - Sprint-Fortschrittsgraph skaliert jetzt gegen Soll und Ist mit Headroom. Hohe Werte wie bei GIGA.GREEN laufen nicht mehr aus der Karte; Soll und Ist sind als getrennte Linien mit Achse und Legende sichtbar.
 - Terminmodal verdichtet: kleinere Filter-Pills, schmalerer Drawer und kompaktere Terminkarten. Technische Hinweise wie `Termin aus HubSpot Mapping erkannt` werden aus Karten und Detailansicht herausgefiltert.
 - Terminmodal erhält eine Suche über Lead-/Unternehmensname, Kontaktname, Rolle und Datum/Zeit. Filter-Zähler reagieren auf die aktuelle Suche.
