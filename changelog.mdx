@@ -5,6 +5,14 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 
 ## 2026-05-24
 
+<Update label="2026-05-24" description="Clerk Login Crash nach Microsoft Auth behoben" tags={["auth", "clerk", "production"]}>
+
+- Admin- und Kundenlogin nutzen im Frontend jetzt Redirect-basiertes Clerk Sign-in statt Clerk UI-Popup.
+- Der Admin-Header rendert eine eigene kompakte Account-/Abmelden-Leiste und mountet keine Clerk UI-Komponenten mehr.
+- Dadurch wird der Produktionsfehler `Clerk was not loaded with Ui components` nach erfolgreichem Microsoft Login vermieden.
+
+</Update>
+
 <Update label="2026-05-24" description="UX Loading, Sidebar und Mobile Navigation ergänzt" tags={["ux", "navigation", "loading"]}>
 
 - Admin-Dashboard erhält eine einklappbare Desktop-Sidebar mit direkten Links zu Dashboards, Dokumentation, Einstellungen und kundenspezifischen Terminen.

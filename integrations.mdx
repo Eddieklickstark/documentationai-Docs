@@ -14,6 +14,7 @@ Produktion:
 - Convex nutzt `CLERK_JWT_ISSUER_DOMAIN=https://clerk.addsales.io`.
 - Vercel braucht `VITE_CLERK_PUBLISHABLE_KEY` für die Vite-App.
 - Microsoft OAuth nutzt die Application Client ID und den Secret Value aus Azure; die Secret ID wird in Clerk nicht verwendet.
+- Das Frontend nutzt Clerk Redirect-Auth und rendert eigene Account-Steuerelemente. Clerk UI-Komponenten werden nicht gemountet.
 
 ## Convex
 
