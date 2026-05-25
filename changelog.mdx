@@ -33,6 +33,7 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 - Stündlicher HubSpot-Cron queued Kundensyncs einzeln, damit ein Gesamtsync nicht mehr nach 600 Sekunden abbricht.
 - Interne Dashboard-Navigation nutzt für Breadcrumb, Sprintliste und Sprint-Switcher jetzt Soft-Navigation. Dadurch wird die App nicht mehr neu geladen und der kurze Clerk-Login-Screen erscheint bei normalen Klicks nicht mehr.
 - `Northstar Industries` wird als HubSpot-Testunternehmen zentral ausgeblendet: in Frontend-Listen, HubSpot-Kandidaten, Kundendetail-Queries und Convex-Onboarding-Guards.
+- Sprintfenster folgen jetzt konsequent dem gesetzten Sprintzyklus: `01` läuft `01. bis Monatsende`, andere Starttage laufen vom gesetzten Tag bis zum gleichen Tag im Folgemonat, z. B. `10.05.–10.06.`. Diese Logik gilt für Frontend-Neuanlage, HubSpot-Sync und Seed-Daten.
 
 </Update>
 
