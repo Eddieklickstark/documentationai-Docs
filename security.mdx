@@ -19,6 +19,8 @@ Aktuelle initiale Admins sind:
 
 Admins können weitere AddSales-Teammitglieder in den Einstellungen einladen. Die Einladung verschickt einen Login-Link zum Admin-Dashboard und wird in Convex als `adminTeamInvites` dokumentiert. Solange die Einladung aktiv ist, akzeptiert Convex diese E-Mail serverseitig als Admin. Entfernte Einladungen verlieren diesen Zugriff wieder.
 
+Wichtig: Die Admin-Einstellungen brauchen ein gültiges Clerk JWT Template `convex`. Wenn Clerk dieses Template gerade erst angelegt hat, kann eine bestehende Browser-Session noch die alte Token-Konfiguration sehen. In diesem Fall einmal abmelden und neu anmelden, danach kann Clerk das Convex-Token für Einstellungen und Admin-Queries ausstellen.
+
 ## Kundenzugriff
 
 Kunden haben zwei Wege:

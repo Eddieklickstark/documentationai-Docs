@@ -11,6 +11,8 @@ description: Laufende technische Änderungen am AddSales Dashboard.
 - Dashboard-Liste nutzt jetzt Convex Snapshot-Metriken aus dem neuesten Sprint, statt in der Übersicht leere Shell-Daten zu zeigen.
 - Frontend fällt bei Convex-/Auth-Fehlern nicht mehr still auf Demo-Daten zurück, sondern zeigt einen konkreten Live-Datenfehler.
 - Clerk-Fehler für fehlendes JWT Template `convex` wird als konkrete Setup-Meldung angezeigt.
+- Admin-Einstellungen zeigen Auth-/Setup-Fehler beim Laden und Versenden von Team-Einladungen sichtbar an, statt Einladungen scheinbar ohne Reaktion abbrechen zu lassen.
+- Live-Clerk-Konfiguration geprüft: Production nutzt `pk_live`, JWT Template `convex` ist vorhanden und setzt `aud=convex`.
 - Stündlicher HubSpot-Cron queued Kundensyncs einzeln, damit ein Gesamtsync nicht mehr nach 600 Sekunden abbricht.
 
 </Update>
